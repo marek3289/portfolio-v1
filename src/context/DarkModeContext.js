@@ -1,6 +1,6 @@
 import React from 'react';
 
-const defaultContextData = { darkMode: true, toggleTheme: () => {} };
+const defaultContextData = { darkMode: false, toggleTheme: () => {} };
 
 const DarkModeContext = React.createContext(defaultContextData);
 

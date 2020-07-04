@@ -1,29 +1,29 @@
-import { useCallback, useEffect, useState } from 'react';
+// import { useCallback, useEffect, useState } from 'react';
 
-const useMedia = (queries, values, defaultValue) => {
-  const mediaQueryLists = typeof window !== `undefined`
-    ? queries.map((q) => window.matchMedia(q))
-    : [];
+// const useMedia = (queries, values, defaultValue) => {
+//   const mediaQueryLists = typeof window !== `undefined`
+//     ? queries.map((q) => window.matchMedia(q))
+//     : [];
 
-  const getValue = useCallback(() => {
-    const index = mediaQueryLists.findIndex((mql) => mql.matches);
+//   const getValue = useCallback(() => {
+//     const index = mediaQueryLists.findIndex((mql) => mql.matches);
 
-    return typeof values[index] !== 'undefined'
-      ? values[index]
-      : defaultValue;
-  }, [defaultValue, values, mediaQueryLists]);
+//     return typeof values[index] !== 'undefined'
+//       ? values[index]
+//       : defaultValue;
+//   }, [defaultValue, values, mediaQueryLists]);
 
-  const [value, setValue] = useState(getValue);
+//   const [value, setValue] = useState(getValue);
 
-  useEffect(() => {
-    const handler = () => setValue(getValue);
+//   useEffect(() => {
+//     const handler = () => setValue(getValue);
 
-    mediaQueryLists.forEach((mql) => mql.addListener(handler));
+//     mediaQueryLists.forEach((mql) => mql.addListener(handler));
 
-    return () => mediaQueryLists.forEach((mql) => mql.removeListener(handler));
-  }, [getValue, mediaQueryLists]);
+//     return () => mediaQueryLists.forEach((mql) => mql.removeListener(handler));
+//   }, [getValue, mediaQueryLists]);
 
-  return value;
-};
+//   return value;
+// };
 
-export default useMedia;
+// export default useMedia;

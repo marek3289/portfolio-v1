@@ -4,13 +4,11 @@ module.exports = {
   siteAuthor: 'marek3289',
   siteKeywords: '',
 
-
   siteUrl: '',
   siteLanguage: 'en_US',
-  // googleAnalyticsID: 'UA-45666519-2',
-  // googleVerification: 'DCl7VAf9tcz6eD9gb67NfkNnJ1PKRNcg8qQiwpbx9Lk',
   name: 'Marek Mazur',
   location: 'Poland',
+
   email: 'marek2494@o2.pl',
   github: 'https://github.com/marek3289',
   socialMedia: [

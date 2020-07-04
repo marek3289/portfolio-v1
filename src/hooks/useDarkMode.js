@@ -1,15 +1,9 @@
-import { useLocalStorage, useMedia } from '@hooks';
+import { useLocalStorage } from '@hooks';
 
 const useDarkMode = () => {
   const [enabledState, setEnabledState] = useLocalStorage('dark-mode-enabled');
 
-  const prefersDarkMode = useMedia(
-    ['(prefers-color-scheme: dark)'],
-    [true],
-    false,
-  );
-
-  const enabled = typeof enabledState !== 'undefined' ? enabledState : prefersDarkMode;
+  const enabled = typeof enabledState !== 'undefined' ? enabledState : false;
 
   return [enabled, setEnabledState];
 };
