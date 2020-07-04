@@ -7,6 +7,7 @@ import { Menu, Hamburger, DarkModeButton } from '@components';
 import { mixins, media } from '@styles';
 import { useScroll } from '@hooks';
 import { navLinks } from '@config';
+import { LogoSVG } from '@assets';
 
 const StyledWrapper = styled.header`
   ${mixins.flexBetween};
@@ -39,8 +40,10 @@ const StyledListWrapper = styled.div`
   ${media.tablet`display: none;`};
 `;
 
-const StyledLogo = styled.div`
-
+const StyledLogo = styled(LogoSVG)`
+  height: 40px;
+  width: auto;
+  color: ${({ theme }) => theme.tertiary};
 `;
 
 const StyledList = styled.ol`
@@ -81,9 +84,9 @@ const Header = () => {
       </Helmet>
       <StyledNav>
 
-        <StyledLogo>
-          <p>logo</p>
-        </StyledLogo>
+        <Link to='/'>
+          <StyledLogo />
+        </Link>
 
         <StyledListWrapper>
           <StyledList>
