@@ -1,51 +1,65 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled, { ThemeProvider } from 'styled-components';
+import { useStaticQuery, graphql } from 'gatsby';
 
-import React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import DarkModeContext from '@context/DarkModeContext';
+import { Header, Footer, SEO, Socials, Email } from '@components';
+import { GlobalStyle } from '@styles';
+import { lightTheme, darkTheme } from '@styles/theme';
+import { useDarkMode } from '@hooks';
 
-import Header from "./header"
-import "./layout.css"
+const StyledWrapper = styled.div`
+  background-color: ${({ theme }) => theme.main};
+  transition: ${({ theme }) => theme.transition};
+  display: flex;
+  flex-direction: column;
+`;
 
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
+const query = graphql`
+  query SiteTitleQuery {
+    site {
+      siteMetadata {
+        title
+        description
       }
     }
-  `)
+  }
+`;
+
+const Layout = ({ children }) => {
+  const [darkModeEnabled, setDarkModeEnabled] = useDarkMode();
+  const data = useStaticQuery(query);
 
   return (
-    <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
-    </>
-  )
-}
+    <DarkModeContext.Provider
+      value={{
+        darkMode: darkModeEnabled,
+        toggleTheme: () => setDarkModeEnabled(!darkModeEnabled),
+      }}
+    >
+      <ThemeProvider theme={darkModeEnabled ? darkTheme : lightTheme}>
+        <SEO metadata={data} />
+        <GlobalStyle />
+        <StyledWrapper>
+          <Header />
+
+          <Socials />
+          <Email />
+
+          <div>
+            {children}
+            <Footer />
+          </div>
+
+        </StyledWrapper>
+      </ThemeProvider>
+    </DarkModeContext.Provider>
+  );
+};
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
-export default Layout
+export default Layout;
