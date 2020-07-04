@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
 import { useStaticQuery, graphql } from 'gatsby';
@@ -7,7 +7,7 @@ import DarkModeContext from '@context/DarkModeContext';
 import { Header, Footer, SEO, Socials, Email } from '@components';
 import { GlobalStyle } from '@styles';
 import { lightTheme, darkTheme } from '@styles/theme';
-import { useDarkMode } from '@hooks';
+// import { useDarkMode } from '@hooks';
 
 const StyledWrapper = styled.div`
   background-color: ${({ theme }) => theme.main};
@@ -28,7 +28,8 @@ const query = graphql`
 `;
 
 const Layout = ({ children }) => {
-  const [darkModeEnabled, setDarkModeEnabled] = useDarkMode();
+  // const [darkModeEnabled, setDarkModeEnabled] = useDarkMode();
+  const [darkModeEnabled, setDarkModeEnabled] = useState(false);
   const data = useStaticQuery(query);
 
   return (
