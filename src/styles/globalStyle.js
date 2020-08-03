@@ -13,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     font-family: ${({ theme }) => theme.font.family.Montserrat};
     font-size: ${({ theme }) => theme.font.size.l};
+    background-color: ${({ theme }) => theme.main};
     overflow: hidden;
     overflow-y: scroll;
     -webkit-font-smoothing: antialiased;

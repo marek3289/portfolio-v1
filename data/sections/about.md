@@ -6,7 +6,7 @@ skills:
   - JavaScript (ES6)
   - TypeScript
   - React (Redux)
-  - React Native
+  - React Native (Expo)
   - Gatsby
   - GraphQL
   - Firebase

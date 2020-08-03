@@ -32,12 +32,13 @@ const StyledSidebar = styled.aside`
   margin-left: auto;
   box-shadow: 0 7.5px 20px -12.5px ${({ theme }) => theme.shadow};
   transition: inherit;
-  ${media.phablet`width: 75vw;`};
+  ${media.phablet`width: 100vw;`};
 `;
 
 const StyledNav = styled.nav`
   ${mixins.flexColumn}
   width: 100%;
+  ${media.phablet`padding: 25px;`};
 `;
 
 const StyledList = styled.ol`
