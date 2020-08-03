@@ -38,7 +38,8 @@ const StyledSidebar = styled.aside`
 const StyledNav = styled.nav`
   ${mixins.flexColumn}
   width: 100%;
-  ${media.phablet`padding: 25px;`};
+  padding:0 25px;
+  ${media.phablet`padding: 0 10px`};
 `;
 
 const StyledList = styled.ol`
@@ -47,22 +48,18 @@ const StyledList = styled.ol`
 
 const StyledListItem = styled.li`
   ${mixins.listItem};
-  margin: 0 auto 20px;
+  margin: 0 auto 40px;
   color: ${({ theme }) => theme.tertiary};
   font-size: ${({ theme }) => theme.font.size.xxl};
   font-weight: ${({ theme }) => theme.font.weight.semibold};
   font-family: ${({ theme }) => theme.font.family.DMMono};
-  ${media.thone`font-size: ${({ theme }) => theme.font.size.xl};`};
-  ${media.tiny`font-size: ${({ theme }) => theme.font.size.l};`};
 `;
 
 const StyledButtonWrapper = styled.div`
-  ${mixins.flexCenter};
-  ${mixins.sidePadding};
-  position: absolute;
-  right: 25px;
-  bottom: 0;
+  align-self: flex-start;
   height: 100px;
+  padding: 0 30px;
+  ${media.phablet`padding: 0 15px`};
 `;
 
 const Menu = ({ isMenuOpen, setMenuOpen }) => {
