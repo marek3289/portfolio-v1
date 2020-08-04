@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 
+import { Layout } from '@components';
 import { Hero, About, Projects, Contact } from '@sections';
 import { mixins, media } from '@styles';
 
@@ -19,12 +20,14 @@ const StyledMainWrapper = styled.main`
 `;
 
 const IndexPage = ({ data }) => (
-  <StyledMainWrapper>
-    <Hero data={data.hero.edges} />
-    <About data={data.about.edges} />
-    <Projects data={data.projects.edges} />
-    <Contact data={data.contact.edges} />
-  </StyledMainWrapper>
+  <Layout>
+    <StyledMainWrapper>
+      <Hero data={data.hero.edges} />
+      <About data={data.about.edges} />
+      <Projects data={data.projects.edges} />
+      <Contact data={data.contact.edges} />
+    </StyledMainWrapper>
+  </Layout>
 );
 
 IndexPage.propTypes = {

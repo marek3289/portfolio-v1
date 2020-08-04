@@ -25,12 +25,12 @@ module.exports = {
         }],
       },
     },
-    {
-      resolve: `gatsby-plugin-layout`,
-      options: {
-        component: require.resolve(`${__dirname}/src/components/layout.js`),
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-layout`,
+    //   options: {
+    //     component: require.resolve(`${__dirname}/src/components/layout.js`),
+    //   },
+    // },
     {
       resolve: 'gatsby-plugin-react-svg',
       options: {
