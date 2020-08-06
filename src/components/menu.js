@@ -36,10 +36,10 @@ const StyledSidebar = styled.aside`
 `;
 
 const StyledNav = styled.nav`
-  ${mixins.flexColumn}
+  ${mixins.flexColumn};
   width: 100%;
   padding:0 25px;
-  ${media.phablet`padding: 0 10px`};
+  ${media.phablet`padding: 0 10px;`};
 `;
 
 const StyledList = styled.ol`
@@ -59,7 +59,7 @@ const StyledButtonWrapper = styled.div`
   align-self: flex-start;
   height: 100px;
   padding: 0 30px;
-  ${media.phablet`padding: 0 15px`};
+  ${media.phablet`padding: 0 15px;`};
 `;
 
 const Menu = ({ isMenuOpen, setMenuOpen }) => {

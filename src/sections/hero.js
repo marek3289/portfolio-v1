@@ -9,12 +9,14 @@ const StyledWrapper = styled(Section)`
   ${mixins.flexColumn};
   justify-content: flex-start;
 
-  min-height: calc(100vh);
+  min-height: calc(100vh - 150px);
   text-align: center;
 
   ${media.thone`
     align-items: flex-start;
     text-align: start;
+    justify-content: center;
+    margin-top: -15%;
   `};
 
   a + a { margin-left: 25px };
@@ -28,9 +30,11 @@ const StyledHeading = styled.h1`
   margin: -10px 0 30px -5px;
 
   ${media.thone`
-    font-size: 3.8rem;
+    font-size: 5.6rem;
     margin: -10px 0 0 -5px;
   `};
+
+  ${media.phablet`font-size: 4.6rem;`};
 `;
 
 const StyledParagraph = styled.p`
@@ -38,7 +42,7 @@ const StyledParagraph = styled.p`
   font-weight: ${({ theme }) => theme.font.weight.regular};
   color: ${({ theme }) => theme.blue};
 
-  ${media.thone`font-size: ${({ theme }) => theme.font.size.m};`};
+  ${media.thone`font-size: ${({ theme }) => theme.font.size.xl};`};
 `;
 
 const StyledDescription = styled.div`
@@ -46,7 +50,7 @@ const StyledDescription = styled.div`
   width: 75%;
   margin: 25px 0 50px;
 
-  ${media.thone`font-size: ${({ theme }) => theme.font.size.xs};`};
+  ${media.thone`font-size: ${({ theme }) => theme.font.size.m};`};
 `;
 
 const StyledButtons = styled.div`
@@ -55,6 +59,9 @@ const StyledButtons = styled.div`
 
 const Hero = ({ data }) => {
   const { frontmatter: { title, subtitle, buttonContact, buttonResume }, html } = data[0].node;
+
+  const wrapper = document.querySelector('section')
+  console.log(wrapper)
 
   return (
     <StyledWrapper>
