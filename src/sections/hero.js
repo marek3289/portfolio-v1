@@ -30,7 +30,7 @@ const StyledHeading = styled.h1`
   margin: -10px 0 30px -5px;
 
   ${media.thone`
-    font-size: 5.6rem;
+    font-size: 5.4rem;
     margin: -10px 0 0 -5px;
   `};
 
@@ -59,9 +59,6 @@ const StyledButtons = styled.div`
 
 const Hero = ({ data }) => {
   const { frontmatter: { title, subtitle, buttonContact, buttonResume }, html } = data[0].node;
-
-  const wrapper = document.querySelector('section')
-  console.log(wrapper)
 
   return (
     <StyledWrapper>
