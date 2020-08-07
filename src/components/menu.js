@@ -44,6 +44,7 @@ const StyledNav = styled.nav`
 
 const StyledList = styled.ol`
   width: inherit;
+  padding-top: 12vh;
 `;
 
 const StyledListItem = styled.li`
@@ -53,13 +54,21 @@ const StyledListItem = styled.li`
   font-size: ${({ theme }) => theme.font.size.xxl};
   font-weight: ${({ theme }) => theme.font.weight.semibold};
   font-family: ${({ theme }) => theme.font.family.DMMono};
+
+  ${media.phablet`
+    font-size: 3.2rem;
+    padding: 0 20px;
+  `};
+
+  ${media.tiny`padding: 0 10px;`};
 `;
 
 const StyledButtonWrapper = styled.div`
   align-self: flex-start;
   height: 100px;
   padding: 0 30px;
-  ${media.phablet`padding: 0 15px;`};
+  ${media.phablet`padding: 0 35px;`};
+  ${media.tiny`padding: 0 30px;`};
 `;
 
 const Menu = ({ isMenuOpen, setMenuOpen }) => {

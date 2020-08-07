@@ -7,7 +7,6 @@ import { DeveloperSVG } from '@assets';
 
 const StyledFlex = styled.div`
   ${mixins.flexBetween};
-
   ${media.bigDesktop` & > div { margin-right: 20px } `};
 `;
 

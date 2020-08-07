@@ -11,6 +11,8 @@ const LinkButton = styled.a`
   color: ${({ theme, secondary }) => secondary ? theme.tertiary : theme.blue};
   cursor: pointer;
 
+  :hover { opacity: 0.8 };
+
   ${media.thone`
     font-size: ${({ theme }) => theme.font.size.xs};
     padding: 10px;
