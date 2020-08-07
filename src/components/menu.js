@@ -44,7 +44,6 @@ const StyledNav = styled.nav`
 
 const StyledList = styled.ol`
   width: inherit;
-  padding-top: 12vh;
 `;
 
 const StyledListItem = styled.li`
