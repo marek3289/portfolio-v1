@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 import { IconLink } from '@components';
 import { Section, Heading, mixins, media } from '@styles';
+import { useScrollTrigger } from '@hooks'; 
 
 const StyledProjectWrapper = styled.div`
   display: grid;
@@ -95,46 +96,50 @@ const StyledImgWrapper = styled.a`
   img { border-radius: ${({ theme }) => theme.borderRadius}; }
 `;
 
-const Projects = ({ data }) => (
-  <Section id='projects'>
-    <Heading>Featured Projects</Heading>
-    <div>
-      {data.map((project) => {
-        const { html, frontmatter } = project.node;
-        const { title, technologies, github, external, featuredImage } = frontmatter;
+const Projects = ({ data }) => {
+  const { refSection } = useScrollTrigger('#projects');
 
-        return (
-          <StyledProjectWrapper key={title}>
+  return (
+    <Section id='projects' ref={refSection}>
+      <Heading>Featured Projects</Heading>
+      <div>
+        {data.map((project) => {
+          const { html, frontmatter } = project.node;
+          const { title, technologies, github, external, featuredImage } = frontmatter;
 
-            <StyledContent>
-              <StyledTitle>{title}</StyledTitle>
-              <StyledDescription dangerouslySetInnerHTML={{ __html: html }} />
-            </StyledContent>
+          return (
+            <StyledProjectWrapper key={title}>
 
-            <StyledAdditionalContent>
-              <StyledTechWrapper>
-                {technologies && technologies.map((tech) => (
-                  <li key={tech}>{tech}</li>
-                ))}
-              </StyledTechWrapper>
-              <StyledLink href={github} aria-label='Github' target='_blank' rel='nofollow noopener noreferrer'>
-                <IconLink name='Github' />
-              </StyledLink>
-              <StyledLink href={external} aria-label='Project Website' target='_blank' rel='nofollow noopener noreferrer'>
-                <IconLink name='External' />
-              </StyledLink>
-            </StyledAdditionalContent>
+              <StyledContent>
+                <StyledTitle>{title}</StyledTitle>
+                <StyledDescription dangerouslySetInnerHTML={{ __html: html }} />
+              </StyledContent>
 
-            <StyledImgWrapper href={external} aria-label='Project Image' target='_blank' rel='nofollow noopener noreferrer'>
-              <Image fluid={featuredImage.childImageSharp.fluid} alt={title} />
-            </StyledImgWrapper>
+              <StyledAdditionalContent>
+                <StyledTechWrapper>
+                  {technologies && technologies.map((tech) => (
+                    <li key={tech}>{tech}</li>
+                  ))}
+                </StyledTechWrapper>
+                <StyledLink href={github} aria-label='Github' target='_blank' rel='nofollow noopener noreferrer'>
+                  <IconLink name='Github' />
+                </StyledLink>
+                <StyledLink href={external} aria-label='Project Website' target='_blank' rel='nofollow noopener noreferrer'>
+                  <IconLink name='External' />
+                </StyledLink>
+              </StyledAdditionalContent>
 
-          </StyledProjectWrapper>
-        );
-      })}
-    </div>
-  </Section>
-);
+              <StyledImgWrapper href={external} aria-label='Project Image' target='_blank' rel='nofollow noopener noreferrer'>
+                <Image fluid={featuredImage.childImageSharp.fluid} alt={title} />
+              </StyledImgWrapper>
+
+            </StyledProjectWrapper>
+          );
+        })}
+      </div>
+    </Section>
+  )
+};
 
 Projects.propTypes = {
   data: PropTypes.arrayOf(

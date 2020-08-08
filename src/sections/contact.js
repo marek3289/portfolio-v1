@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { Section, Heading, LinkButton, mixins, media } from '@styles';
+import { useScrollTrigger } from '@hooks'; 
 import { email } from '@config';
 
 const StyledWrapper = styled(Section)`
@@ -34,8 +35,10 @@ const StyledContent = styled.div`
 const Contact = ({ data }) => {
   const { frontmatter: { title, buttonText }, html } = data[0].node;
 
+  const { refSection } = useScrollTrigger('#contact');
+
   return (
-    <StyledWrapper id='contact'>
+    <StyledWrapper id='contact' ref={refSection}>
       <StyledHeading>{title}</StyledHeading>
       <StyledContent dangerouslySetInnerHTML={{ __html: html }} />
       <LinkButton href={`mailto:${email}`}>{buttonText}</LinkButton>

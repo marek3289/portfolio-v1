@@ -28,7 +28,6 @@ const StyledHeading = styled.h1`
   font-size: 7.2rem;
   font-weight: ${({ theme }) => theme.font.weight.bold};
   color: ${({ theme }) => theme.tertiary};
-  opacity: 0.8;
   margin: -10px 0 30px -5px;
 
   ${media.thone`

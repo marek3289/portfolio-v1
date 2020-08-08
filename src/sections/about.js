@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { mixins, media, Section, Heading } from '@styles';
 import { DeveloperSVG } from '@assets';
+import { useScrollTrigger } from '@hooks'; 
 
 const StyledFlex = styled.div`
   ${mixins.flexBetween};
@@ -50,8 +51,10 @@ const StyledListItem = styled.li`
 const About = ({ data }) => {
   const { frontmatter: { title, skills }, html } = data[0].node;
 
+  const { refSection } = useScrollTrigger('#about');
+
   return (
-    <Section id='about'>
+    <Section id='about' ref={refSection}>
       <Heading>{title}</Heading>
       <StyledFlex>
         <StyledContent>
