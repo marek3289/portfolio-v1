@@ -1,4 +1,5 @@
 export { default as GlobalStyle } from './globalStyle';
+export { default as TransitionStyle } from './transitionStyle';
 export { default as mixins } from './mixins';
 export { default as media } from './media';
 

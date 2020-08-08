@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import { Menu, Hamburger, DarkModeButton } from '@components';
 import { mixins, media } from '@styles';
-import { useScroll } from '@hooks';
+import { useScroll, useMounted } from '@hooks';
 import { navLinks } from '@config';
 import { LogoSVG } from '@assets';
 
@@ -66,7 +67,8 @@ const StyledButton = styled.div`
 
 const Header = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
-  const { scrollDirection } = useScroll(isMenuOpen);
+  const { scrollDirection } = useScroll();
+  const { isMounted } = useMounted(500); 
 
   const handleResize = () => {
     if (window.innerWidth > 768 && isMenuOpen) setMenuOpen(false);
@@ -84,26 +86,49 @@ const Header = () => {
       </Helmet>
       <StyledNav>
 
-        <Link to='/'>
-          <StyledLogo />
-        </Link>
+        <TransitionGroup component={null}>
+          {isMounted && (
+            <CSSTransition classNames='fadein' timeout={2000}>
+              <Link to='/'>
+                <StyledLogo />
+              </Link>
+            </CSSTransition>
+            )}
+        </TransitionGroup>
 
         <StyledListWrapper>
           <StyledList>
-            {navLinks.map(({ name, url }) => (
-              <StyledListItem key={name}>
-                <Link to={url}>{name}</Link>
-              </StyledListItem>
-            ))}
+            <TransitionGroup component={null}>
+              {isMounted && (
+                navLinks.map(({ name, url }, i) => (
+                  <CSSTransition key={name} classNames='fadedown' timeout={2000}>
+                    <StyledListItem style={{ transitionDelay: `${i * 150}ms` }}>
+                      <Link to={url}>{name}</Link>
+                    </StyledListItem>
+                  </CSSTransition>
+                ))
+              )}
+            </TransitionGroup>
           </StyledList>
 
-          <StyledButton>
-            <DarkModeButton />
-          </StyledButton>
-
+          <TransitionGroup component={null}>
+            {isMounted && (
+              <CSSTransition key={name} classNames='fadedown' timeout={2000}>
+                <StyledButton style={{ transitionDelay: `${(navLinks.length + 1) * 150}ms` }}>
+                  <DarkModeButton />
+                </StyledButton>
+              </CSSTransition>
+            )}
+          </TransitionGroup>
         </StyledListWrapper>
 
-        <Hamburger isMenuOpen={isMenuOpen} setMenuOpen={setMenuOpen} />
+        <TransitionGroup component={null}>
+          {isMounted && (
+            <CSSTransition classNames='fadein' timeout={2000}>
+              <Hamburger isMenuOpen={isMenuOpen} setMenuOpen={setMenuOpen} />
+            </CSSTransition>
+          )}
+        </TransitionGroup>
 
       </StyledNav>
 

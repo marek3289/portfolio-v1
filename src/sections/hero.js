@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import { Section, LinkButton, media, mixins } from '@styles';
+import { useMounted } from '@hooks';
 import { email } from '@config';
 
 const StyledWrapper = styled(Section)`
@@ -58,17 +60,38 @@ const StyledButtons = styled.div`
 `;
 
 const Hero = ({ data }) => {
+  const { isMounted } = useMounted(1500); 
+
   const { frontmatter: { title, subtitle, buttonContact, buttonResume }, html } = data[0].node;
+
+  const paragraph = () => <StyledParagraph style={{ transitionDelay: '100ms' }}>{subtitle}</StyledParagraph>;
+
+  const heading = () => <StyledHeading style={{ transitionDelay: '300ms' }}>{title}</StyledHeading>;
+  
+  const description = () => (
+    <StyledDescription style={{ transitionDelay: '500ms' }} dangerouslySetInnerHTML={{ __html: html }} />
+  );
+
+  const buttons = () => (
+    <StyledButtons style={{ transitionDelay: '700ms' }}>
+      <LinkButton href={`mailto:${email}`}>{buttonContact}</LinkButton>
+      <LinkButton secondary href='/resume.pdf' target='_blank' rel='nofollow noopener noreferrer'>{buttonResume}</LinkButton>
+    </StyledButtons>
+  );
+
+  const items = [paragraph, heading, description, buttons];
 
   return (
     <StyledWrapper>
-      <StyledParagraph>{subtitle}</StyledParagraph>
-      <StyledHeading>{title}</StyledHeading>
-      <StyledDescription dangerouslySetInnerHTML={{ __html: html }} />
-      <StyledButtons>
-        <LinkButton href={`mailto:${email}`}>{buttonContact}</LinkButton>
-        <LinkButton secondary href='/resume.pdf' target='_blank' rel='nofollow noopener noreferrer'>{buttonResume}</LinkButton>
-      </StyledButtons>
+      <TransitionGroup component={null}>
+        {isMounted &&
+          items.map((item, i) => (
+            <CSSTransition key={i} classNames="fadeup" timeout={2000}>
+              {item}
+            </CSSTransition>
+          ))
+        }
+      </TransitionGroup>
     </StyledWrapper>
   );
 };

@@ -10,3 +10,4 @@ export { default as Email } from './email';
 export { default as IconLink } from './iconLink';
 export { default as Hamburger } from './hamburger';
 export { default as DarkModeButton } from './darkModeButton';
+export { default as Loader } from './loader';

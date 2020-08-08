@@ -51,7 +51,6 @@ const mixins = {
     color: ${({ theme }) => theme.tertiary};
     font-weight: ${({ theme }) => theme.font.weight.regular};
     font-size: ${({ theme }) => theme.font.size.l};
-    opacity: 0.6;
   `,
 };
 

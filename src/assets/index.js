@@ -7,3 +7,4 @@ export { default as SunIcon } from './sun.svg';
 export { default as ExternalIcon } from './external.svg';
 export { default as DeveloperSVG } from './developer.svg';
 export { default as LogoSVG } from './logo.svg';
+export { default as BigLogoSVG } from './big-logo.svg';

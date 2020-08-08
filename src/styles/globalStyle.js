@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import TransitionStyle from './transitionStyle';
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -37,6 +38,9 @@ const GlobalStyle = createGlobalStyle`
     background-color: transparent;
     border: 0;
   }
+
+  ${TransitionStyle};
+  
 `;
 
 export default GlobalStyle;

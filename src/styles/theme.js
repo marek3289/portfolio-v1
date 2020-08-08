@@ -41,14 +41,14 @@ const theme = {
       semibold: '500',
       bold: '700',
     },
-    size: {// zamienic na xxs 
-      xs: '1.2rem',   // UZYTE MIXINS 01, 02 
-      s: '1.3rem',    // uzyte header
-      m: '1.4rem',    //uzyte menu, email
-      l: '1.6rem',    // uzyte hero
-      xl: '1.8rem',   //uzyte menu
-      xxl: '2.0rem',  //uzyte menu
-      xxxl: '2.6rem',  //uzyte heading
+    size: {
+      xs: '1.2rem',
+      s: '1.3rem',
+      m: '1.4rem',
+      l: '1.6rem',
+      xl: '1.8rem',
+      xxl: '2.0rem',
+      xxxl: '2.6rem',
     },
   },
   zIndex: {
@@ -56,10 +56,12 @@ const theme = {
     level2: '20',
     level3: '30',
     level4: '40',
+    level5: '50',
   },
 
   transition: 'all 0.25s ease-in-out',
   borderRadius: '3px',
+  fadeEffect: '300ms ease-out',
 };
 
 export const lightTheme = { ...theme, ...heroTheme.light };

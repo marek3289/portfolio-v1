@@ -4,12 +4,12 @@ const useScroll = () => {
   const [lastScroll, setLastScrollTop] = useState(0);
   const [scrollDirection, setScrollDirection] = useState('none');
 
-  const handleScroll = (isMenuOpen) => {
+  const handleScroll = () => {
     const currentPosition = window.scrollY;
 
     if (currentPosition < 30) {
       setScrollDirection('none');
-    } else if (currentPosition > lastScroll && currentPosition > 100 && !isMenuOpen) {
+    } else if (currentPosition > lastScroll && currentPosition > 100) {
       if (scrollDirection !== 'down') setScrollDirection('down');
     } else if (currentPosition + window.innerHeight < document.body.scrollHeight) {
       if (scrollDirection !== 'up') setScrollDirection('up');

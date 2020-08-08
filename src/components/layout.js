@@ -4,7 +4,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import { useStaticQuery, graphql } from 'gatsby';
 
 import DarkModeContext from '@context/DarkModeContext';
-import { Header, Footer, SEO, Socials, Email } from '@components';
+import { Header, Footer, SEO, Socials, Email, Loader } from '@components';
 import { GlobalStyle } from '@styles';
 import { lightTheme, darkTheme } from '@styles/theme';
 import { useDarkMode } from '@hooks';
@@ -28,8 +28,8 @@ const query = graphql`
 `;
 
 const Layout = ({ children }) => {
+  const [isLoading, setIsLoading] = useState(true);
   const [darkModeEnabled, setDarkModeEnabled] = useDarkMode();
-  // const [darkModeEnabled, setDarkModeEnabled] = useState(false);
   const data = useStaticQuery(query);
 
   return (
@@ -42,18 +42,24 @@ const Layout = ({ children }) => {
       <ThemeProvider theme={darkModeEnabled ? darkTheme : lightTheme}>
         <SEO metadata={data} />
         <GlobalStyle />
-        <StyledWrapper>
-          <Header />
 
-          <Socials />
-          <Email />
+        {isLoading ? (
+          <Loader handleLoadingEnd={() => setIsLoading(false)} />
+        ) : (
+          <StyledWrapper>
+            <Header />
 
-          <div>
-            {children}
-            <Footer />
-          </div>
+            <Socials />
+            <Email />
 
-        </StyledWrapper>
+            <div>
+              {children}
+              <Footer />
+            </div>
+
+          </StyledWrapper>
+        )}
+
       </ThemeProvider>
     </DarkModeContext.Provider>
   );
