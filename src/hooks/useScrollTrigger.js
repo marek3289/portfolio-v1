@@ -8,9 +8,9 @@ const useScrollTrigger = (sectionId) => {
   const refSection = useRef(null);
 
   useEffect(() => {
-    gsap.fromTo(refSection.current, { y: '+=50', opacity: 0 }, { y: 0, opacity: 1, duration: 2, scrollTrigger: {
+    gsap.fromTo(refSection.current, { y: '+=50', opacity: 0 }, { y: 0, opacity: 1, duration: 1, scrollTrigger: {
       trigger: sectionId,
-      start: 'top 50%',
+      start: 'top 40%',
     }})
   }, [])
 

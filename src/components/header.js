@@ -7,7 +7,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { Menu, Hamburger, DarkModeButton } from '@components';
 import { mixins, media } from '@styles';
 import { useScroll, useMounted } from '@hooks';
-import { navLinks } from '@config';
+import { navLinks, headerDelay } from '@config';
 import { LogoSVG } from '@assets';
 
 const StyledWrapper = styled.header`
@@ -68,7 +68,7 @@ const StyledButton = styled.div`
 const Header = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const { scrollDirection } = useScroll();
-  const { isMounted } = useMounted(500); 
+  const { isMounted } = useMounted(headerDelay); 
 
   const handleResize = () => {
     if (window.innerWidth > 768 && isMenuOpen) setMenuOpen(false);

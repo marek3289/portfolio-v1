@@ -1,16 +1,19 @@
 module.exports = {
   siteTitle: 'Marek Mazur | Junior Front-End Developer',
-  siteDescription: '',
+  siteDescription: 'My Personal Website',
   siteAuthor: 'marek3289',
-  siteKeywords: '',
-
-  siteUrl: '',
+  siteKeywords: 'Marek, Mazur, Marek Mazur, marek3289, portfolio, cv, resume, front-end, web developer, developer, javascript, react',
+  siteUrl: 'https://marek3289.netlify.app',
   siteLanguage: 'en_US',
+
+  googleAnalyticsID: '',
+  googleVerification: '',
+
   name: 'Marek Mazur',
   location: 'Poland',
-
   email: 'marek2494@o2.pl',
   github: 'https://github.com/marek3289',
+
   socialMedia: [
     {
       name: 'Github',
@@ -43,4 +46,8 @@ module.exports = {
       url: '/#contact',
     },
   ],
+
+  headerDelay: 500,
+  heroDelay: 1500,
+  layoutDelay: 2500,
 };

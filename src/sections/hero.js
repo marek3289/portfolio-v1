@@ -5,7 +5,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import { Section, LinkButton, media, mixins } from '@styles';
 import { useMounted } from '@hooks';
-import { email } from '@config';
+import { email, heroDelay } from '@config';
 
 const StyledWrapper = styled(Section)`
   ${mixins.flexColumn};
@@ -59,7 +59,7 @@ const StyledButtons = styled.div`
 `;
 
 const Hero = ({ data }) => {
-  const { isMounted } = useMounted(1500); 
+  const { isMounted } = useMounted(heroDelay); 
 
   const { frontmatter: { title, subtitle, buttonContact, buttonResume }, html } = data[0].node;
 

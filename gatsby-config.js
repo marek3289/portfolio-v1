@@ -43,18 +43,18 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
     },
-    // {
-    //   resolve: `gatsby-plugin-manifest`,
-    //   options: {
-    //     name: `MarekMazur`,
-    //     short_name: `MarekMazur`,
-    //     start_url: `/`,
-    //     background_color: ``,
-    //     theme_color: ``,
-    //     display: `minimal-ui`,
-    //     icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Marek Mazur`,
+        short_name: `MarekMazur`,
+        start_url: `/`,
+        background_color: `#191919`,
+        theme_color: `#191919`,
+        display: `minimal-ui`,
+        icon: `static/icon.png`,
+      },
+    },
     `gatsby-plugin-offline`,
   ],
 };

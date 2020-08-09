@@ -5,6 +5,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import { media } from '@styles';
 import { useMounted } from '@hooks';
+import { layoutDelay } from '@config';
 
 const StyledWrapper = styled.div`
   position: fixed;
@@ -17,7 +18,7 @@ const StyledWrapper = styled.div`
 `;
 
 const SideLayout = ({ children, orientation }) => {
-  const { isMounted } = useMounted(2500); 
+  const { isMounted } = useMounted(layoutDelay); 
     
   return (
     <StyledWrapper orientation={orientation}>
