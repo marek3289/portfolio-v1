@@ -1,4 +1,4 @@
-const { siteTitle, siteDescription, siteAuthor, siteKeywords } = require('./src/config');
+const { siteTitle, siteDescription, siteAuthor, siteKeywords, googleAnalyticsID } = require('./src/config');
 
 module.exports = {
   siteMetadata: {
@@ -53,6 +53,12 @@ module.exports = {
         theme_color: `#191919`,
         display: `minimal-ui`,
         icon: `static/icon.png`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: googleAnalyticsID,
       },
     },
     `gatsby-plugin-offline`,

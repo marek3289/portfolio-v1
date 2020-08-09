@@ -5,9 +5,7 @@ module.exports = {
   siteKeywords: 'Marek, Mazur, Marek Mazur, marek3289, portfolio, cv, resume, front-end, web developer, developer, javascript, react',
   siteUrl: 'https://marek3289.netlify.app',
   siteLanguage: 'en_US',
-
-  googleAnalyticsID: '',
-  googleVerification: '',
+  googleAnalyticsID: 'UA-175020071-1',
 
   name: 'Marek Mazur',
   location: 'Poland',
