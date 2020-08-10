@@ -1,11 +1,13 @@
-const { siteTitle, siteDescription, siteAuthor, siteKeywords, googleAnalyticsID } = require('./src/config');
+const config = require('./src/config');
 
 module.exports = {
   siteMetadata: {
-    title: siteTitle,
-    description: siteDescription,
-    author: siteAuthor,
-    keywords: siteKeywords,
+    title: config.siteTitle,
+    description: config.siteDescription,
+    author: config.siteAuthor,
+    keywords: config.siteKeywords,
+    url: config.siteUrl,
+    lang: config.siteLanguage,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -58,7 +60,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: googleAnalyticsID,
+        trackingId: config.googleAnalyticsID,
         head: true,
       },
     },

@@ -22,6 +22,10 @@ const query = graphql`
       siteMetadata {
         title
         description
+        author
+        keywords
+        url
+        lang
       }
     }
   }
@@ -40,7 +44,7 @@ const Layout = ({ children }) => {
       }}
     >
       <ThemeProvider theme={darkModeEnabled ? darkTheme : lightTheme}>
-        <SEO metadata={data} />
+        <SEO metadata={data.site.siteMetadata} />
         <GlobalStyle />
 
         {isLoading ? (

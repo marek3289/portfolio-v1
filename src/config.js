@@ -1,6 +1,6 @@
 module.exports = {
-  siteTitle: 'Marek Mazur | Junior Front-End Developer',
-  siteDescription: 'My Personal Website',
+  siteTitle: 'Marek Mazur | Front-End Developer',
+  siteDescription: 'I am Junior Front-End Developer based in Poland specializes in work with React',
   siteAuthor: 'marek3289',
   siteKeywords: 'Marek, Mazur, Marek Mazur, marek3289, portfolio, cv, resume, front-end, web developer, developer, javascript, react',
   siteUrl: 'https://marek3289.netlify.app',
