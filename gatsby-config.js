@@ -8,7 +8,6 @@ module.exports = {
     keywords: config.siteKeywords,
     url: config.siteUrl,
     lang: config.siteLanguage,
-    image: config.siteImage,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -41,6 +40,13 @@ module.exports = {
       options: {
         name: `data`,
         path: `${__dirname}/data/sections`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/assets/images`,
       },
     },
     {

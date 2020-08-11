@@ -4,26 +4,31 @@ import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
 const query = graphql`
-  query {	
-    site {	
-      siteMetadata {	
-        title
-        description
-        author
-        keywords
-        url
-        lang
-        image
-      }	
-    }	
-  }	
+    query {	
+      site {	
+        siteMetadata {	
+          title
+          description
+          author
+          keywords
+          url
+          lang
+        }	
+      }
+      image: imageSharp(fixed: {originalName: {eq: "page.png"}}) {
+        fixed {
+          src
+        }
+      }
+    }
 `;
 
 const SEO = ({ title }) => {
-  const { site } = useStaticQuery(query);	
-  const { description, author, url, keywords, lang, image } = site.siteMetadata;
+  const { site, image } = useStaticQuery(query);	
+  const { description, author, url, keywords, lang } = site.siteMetadata;
 
   const metaTitle = title || site.siteMetadata.title;
+  const metaImage = new URL(image.fixed.src, url);
  
   return (
     <Helmet
@@ -46,14 +51,14 @@ const SEO = ({ title }) => {
           property: `og:url`,
           content: url,
         },
-        // {
-        //   property: `og:image`,
-        //   content: `${url}${image}`,
-        // },
-        // {
-        //   property: `og:image:type`,
-        //   content: 'image/png',
-        // },
+        {
+          property: `og:image`,
+          content: metaImage,
+        },
+        {
+          property: `og:image:type`,
+          content: 'image/png',
+        },
         {
           property: `og:locale`,
           content: lang,
@@ -82,10 +87,10 @@ const SEO = ({ title }) => {
           name: `twitter:url`,
           content: url,
         },
-        // {
-        //   name: `twitter:image`,
-        //   content: `${url}${image}`,
-        // },
+        {
+          name: `twitter:image`,
+          content: metaImage,
+        },
       ].concat(keywords && keywords.length > 0 ? {
         name: 'keywords',
         content: keywords,
