@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
-import { useStaticQuery, graphql } from 'gatsby';
 
 import DarkModeContext from '@context/DarkModeContext';
 import { Header, Footer, SEO, Socials, Email, Loader } from '@components';
@@ -16,25 +15,9 @@ const StyledWrapper = styled.div`
   flex-direction: column;
 `;
 
-const query = graphql`
-  query SiteTitleQuery {
-    site {
-      siteMetadata {
-        title
-        description
-        author
-        keywords
-        url
-        lang
-      }
-    }
-  }
-`;
-
 const Layout = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [darkModeEnabled, setDarkModeEnabled] = useDarkMode();
-  const data = useStaticQuery(query);
 
   return (
     <DarkModeContext.Provider
@@ -44,7 +27,7 @@ const Layout = ({ children }) => {
       }}
     >
       <ThemeProvider theme={darkModeEnabled ? darkTheme : lightTheme}>
-        <SEO metadata={data.site.siteMetadata} />
+        <SEO />
         <GlobalStyle />
 
         {isLoading ? (

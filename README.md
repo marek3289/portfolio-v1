@@ -1,7 +1,7 @@
 <h2 align="center">My Personal Webiste</h2>
 
 <p align="center">
-  <img src="./static/page.png" alt="portfolio" />
+  <img src="./src/assets/page.png" alt="portfolio" />
 </p>
 
 <br>

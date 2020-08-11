@@ -8,6 +8,7 @@ module.exports = {
     keywords: config.siteKeywords,
     url: config.siteUrl,
     lang: config.siteLanguage,
+    image: config.siteImage,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -54,7 +55,7 @@ module.exports = {
         background_color: `#191919`,
         theme_color: `#191919`,
         display: `minimal-ui`,
-        icon: `static/icon.png`,
+        icon: `src/assets/icon.png`,
       },
     },
     {

@@ -1,14 +1,34 @@
-import React from "react"
-import PropTypes from "prop-types"
-import { Helmet } from "react-helmet"
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet';
+import { useStaticQuery, graphql } from 'gatsby';
 
-const SEO = ({ metadata }) => {
-  const { title, description, author, keywords, url, lang } = metadata;
+const query = graphql`
+  query {	
+    site {	
+      siteMetadata {	
+        title
+        description
+        author
+        keywords
+        url
+        lang
+        image
+      }	
+    }	
+  }	
+`;
 
+const SEO = ({ title }) => {
+  const { site } = useStaticQuery(query);	
+  const { description, author, url, keywords, lang, image } = site.siteMetadata;
+
+  const metaTitle = title || site.siteMetadata.title;
+ 
   return (
     <Helmet
       htmlAttributes={{lang}}
-      title={title}
+      title={metaTitle}
       meta={[
         {
           name: `description`,
@@ -16,7 +36,7 @@ const SEO = ({ metadata }) => {
         },
         {
           property: `og:title`,
-          content: title,
+          content: metaTitle,
         },
         {
           property: `og:description`,
@@ -27,12 +47,24 @@ const SEO = ({ metadata }) => {
           content: url,
         },
         {
+          property: `og:image`,
+          content: `${url}${image}`,
+        },
+        {
+          property: `og:image:type`,
+          content: 'image/png',
+        },
+        {
+          property: `og:locale`,
+          content: lang,
+        },
+        {
           property: `og:type`,
           content: `website`,
         },
         {
           name: `twitter:card`,
-          content: `summary`,
+          content: `summary_large_image`,
         },
         {
           name: `twitter:creator`,
@@ -40,11 +72,19 @@ const SEO = ({ metadata }) => {
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: metaTitle,
         },
         {
           name: `twitter:description`,
           content: description,
+        },
+        {
+          name: `twitter:url`,
+          content: url,
+        },
+        {
+          name: `twitter:image`,
+          content: `${url}${image}`,
         },
       ].concat(keywords && keywords.length > 0 ? {
         name: 'keywords',
@@ -54,15 +94,12 @@ const SEO = ({ metadata }) => {
   );
 };
 
+SEO.defaultProps = {
+  title: '',
+};
+
 SEO.propTypes = {
-  metadata: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    author: PropTypes.string.isRequired,
-    keywords: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired,
-    lang: PropTypes.string.isRequired,
-  }).isRequired,
+  title: PropTypes.string,
 };
 
 export default SEO;
