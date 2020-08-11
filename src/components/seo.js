@@ -46,14 +46,14 @@ const SEO = ({ title }) => {
           property: `og:url`,
           content: url,
         },
-        {
-          property: `og:image`,
-          content: `${url}${image}`,
-        },
-        {
-          property: `og:image:type`,
-          content: 'image/png',
-        },
+        // {
+        //   property: `og:image`,
+        //   content: `${url}${image}`,
+        // },
+        // {
+        //   property: `og:image:type`,
+        //   content: 'image/png',
+        // },
         {
           property: `og:locale`,
           content: lang,
@@ -82,10 +82,10 @@ const SEO = ({ title }) => {
           name: `twitter:url`,
           content: url,
         },
-        {
-          name: `twitter:image`,
-          content: `${url}${image}`,
-        },
+        // {
+        //   name: `twitter:image`,
+        //   content: `${url}${image}`,
+        // },
       ].concat(keywords && keywords.length > 0 ? {
         name: 'keywords',
         content: keywords,
